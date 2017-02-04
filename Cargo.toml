@@ -2,5 +2,5 @@
 name = "http_status"
 version = "0.10.0"
 description = "HTTP status codes split out from hyper.rs"
-authors = ["Sean McArthur <sean.monstar@gmail.com>"]
+authors = ["Sean McArthur <sean.monstar@gmail.com>", "Mick Koch <mick@kochm.co>"]
 license = "MIT"

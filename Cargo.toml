@@ -1,6 +1,9 @@
 [package]
-name = "http_status"
+name = "uhttp_status"
 version = "0.10.0"
 description = "HTTP status codes split out from hyper.rs"
 authors = ["Sean McArthur <sean.monstar@gmail.com>", "Mick Koch <mick@kochm.co>"]
 license = "MIT"
+documentation = "https://docs.rs/uhttp_status"
+repository = "https://github.com/kchmck/uhttp_status.rs"
+keywords = ["http", "status", "code"]

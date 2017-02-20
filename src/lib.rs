@@ -1,4 +1,16 @@
-//! HTTP status codes
+//! This crate provides an HTTP status code formatter, split out from
+//! [hyper.rs](https://hyper.rs).
+//!
+//! ## Example
+//!
+//! ```rust
+//! use uhttp_status::{StatusCode, StatusClass};
+//!
+//! assert_eq!(format!("{}", StatusCode::NotFound), "404 Not Found");
+//! assert_eq!(format!("{}", StatusCode::Ok), "200 OK");
+//! assert_eq!(StatusCode::NotImplemented.class(), StatusClass::ServerError);
+//! ```
+
 use std::fmt;
 use std::cmp::Ordering;
 
@@ -16,7 +28,7 @@ use std::cmp::Ordering;
 /// `self.class().default_code()`:
 ///
 /// ```rust
-/// # use hyper_status::StatusCode;
+/// # use uhttp_status::StatusCode;
 /// let status = StatusCode::Unregistered(123);
 /// assert_eq!(status.class().default_code(), StatusCode::Continue);
 /// ```
@@ -496,7 +508,7 @@ impl Copy for StatusCode {}
 /// Formats the status code, *including* the canonical reason.
 ///
 /// ```rust
-/// # use hyper_status::StatusCode::{ImATeapot, Unregistered};
+/// # use uhttp_status::StatusCode::{ImATeapot, Unregistered};
 /// assert_eq!(format!("{}", ImATeapot), "418 I'm a teapot");
 /// assert_eq!(format!("{}", Unregistered(123)),
 ///            "123 <unknown status code>");
@@ -609,8 +621,8 @@ impl StatusClass {
     /// example, this will produce `BadRequest` (400):
     ///
     /// ```rust
-    /// # use hyper_status::StatusClass::ClientError;
-    /// # use hyper_status::StatusCode::BadRequest;
+    /// # use uhttp_status::StatusClass::ClientError;
+    /// # use uhttp_status::StatusCode::BadRequest;
     /// assert_eq!(ClientError.default_code(), BadRequest);
     /// ```
     ///
@@ -634,7 +646,7 @@ impl StatusClass {
     /// This is demonstrated thusly:
     ///
     /// ```rust
-    /// # use hyper_status::StatusCode::{Unregistered, BadRequest};
+    /// # use uhttp_status::StatusCode::{Unregistered, BadRequest};
     /// // Suppose we have received this status code.
     /// // You will never directly create an unregistered status code.
     /// let status = Unregistered(471);
